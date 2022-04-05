@@ -3,6 +3,8 @@
 
 #include "rozmiar.h"
 #include <iostream>
+// schemat
+//zarys klasy
 
 
 /*
@@ -13,6 +15,7 @@ class Macierz {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
+   double tab[ROZMIAR][ROZMIAR];
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
