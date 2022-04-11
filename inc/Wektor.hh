@@ -13,10 +13,22 @@ class Wektor {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
+  double rozmiar[ROZMIAR];
+
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */    
+
+Wektor operator+(Wektor v);
+Wektor operator-(Wektor v);
+Wektor operator*(double liczba);
+double operator*(Wektor v);
+Wektor operator/(double liczba);
+const double &operator[](int i)const{return rozmiar[i];}
+double &operator[](int i){return rozmiar[i];}
+
+
 };
 
 
@@ -36,6 +48,6 @@ std::istream& operator >> (std::istream &Strm, Wektor &Wek);
  * znalezc w pliku:
  *    ~bk/edu/kpo/zalecenia.txt 
  */
-std::ostream& operator << (std::ostream &Strm, const Wektor &Wek);
+std::ostream& operator << (std::ostream &Strm,  Wektor &Wek);
 
 #endif

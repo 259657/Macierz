@@ -2,6 +2,7 @@
 #define MACIERZ_HH
 
 #include "rozmiar.h"
+#include "Wektor.hh"
 #include <iostream>
 // schemat
 //zarys klasy
@@ -16,10 +17,18 @@ class Macierz {
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
    double tab[ROZMIAR][ROZMIAR];
+   //lub wektor wektorow Wketor tab[ROZMIAR] jeszcze nwm
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
-   */    
+   */ 
+  const double &operator () (int i, int j) const{return tab[i][j];} 
+  double &operator() (int i,  int j){return tab[i][j];}
+
+  Macierz operator + (Macierz M);
+
+  Wektor operator * (Wektor tmp);//chyba ma zwracac wektor trzeba dopytac
+
 };
 
 
