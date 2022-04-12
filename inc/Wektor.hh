@@ -24,7 +24,8 @@ Wektor operator+(Wektor v);
 Wektor operator-(Wektor v);
 Wektor operator*(double liczba);
 double operator*(Wektor v);
-Wektor operator/(double liczba);
+Wektor operator&(Wektor v);// mnozenie wektorowe
+//Wektor operator/(double liczba);
 const double &operator[](int i)const{return rozmiar[i];}
 double &operator[](int i){return rozmiar[i];}
 

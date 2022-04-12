@@ -22,13 +22,16 @@ class Macierz {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */ 
-  const double &operator () (int i, int j) const{return tab[i][j];} 
-  double &operator() (int i,  int j){return tab[i][j];}
+  const double &operator()(int i, int j) const{return tab[i][j];} 
+  double &operator()(int i,  int j){return tab[i][j];}
 
   Macierz operator + (Macierz M);
+  Macierz operator - (Macierz M);
+  Macierz zamien_kol_wiersz();
+  Macierz operator * (double liczba);
 
-  Wektor operator * (Wektor tmp);//chyba ma zwracac wektor trzeba dopytac
-
+  
+  //zamianawiersza/kolumy
 };
 
 
