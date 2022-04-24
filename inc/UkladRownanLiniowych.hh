@@ -2,6 +2,8 @@
 #define UKLADROWNANLINIOWYCH_HH
 
 #include <iostream>
+#include "Macierz.hh"
+#include "Wektor.hh"
 
 
 /*
@@ -16,6 +18,9 @@ class UkladRownanLiniowych {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */    
+  Macierz M;
+  Wektor w;
+  Wektor Oblicz(UkladRownanLiniowych &UklRown);
 };
 
 
@@ -35,9 +40,7 @@ std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych &UklRown);
  * znalezc w pliku:
  *    ~bk/edu/kpo/zalecenia.txt 
  */
-std::ostream& operator << ( std::ostream                  &Strm, 
-                            const UkladRownanLiniowych    &UklRown
-                          );
+std::ostream& operator << ( std::ostream &Strm,  UkladRownanLiniowych &UklRown);
 
 
 #endif

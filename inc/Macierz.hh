@@ -17,18 +17,26 @@ class Macierz {
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
    double tab[ROZMIAR][ROZMIAR];
+   double det;
    //lub wektor wektorow Wketor tab[ROZMIAR] jeszcze nwm
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */ 
+  
   const double &operator()(int i, int j) const{return tab[i][j];} 
   double &operator()(int i,  int j){return tab[i][j];}
 
   Macierz operator + (Macierz M);
   Macierz operator - (Macierz M);
   Macierz zamien_kol_wiersz();
+  Macierz zamien_wiersze(int i,int j);
+  Macierz zamien_kol_z_wektorem(int i,Wektor w);
+  Macierz zamien_kol(int i,int j);
   Macierz operator * (double liczba);
+  double wyzG();
+  
+  //double det()const{return wyzC();};
 
   
   //zamianawiersza/kolumy

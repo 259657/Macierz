@@ -13,6 +13,7 @@ class Wektor {
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
    */
+  
   double rozmiar[ROZMIAR];
 
   public:
