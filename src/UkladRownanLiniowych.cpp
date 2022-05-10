@@ -3,59 +3,59 @@
 #include "Wektor.hh"
 using namespace std;
 
+// template<typename T, int Rozmiar>
+// Wektor<T ,Rozmiar> UkladRownanLiniowych<T ,Rozmiar>::Oblicz(UkladRownanLiniowych<T ,Rozmiar> &UklRown){
+//  Wektor<T ,Rozmiar> wolne;
+//  Macierz<T ,Rozmiar> macierz;
+//  double tmp[ROZMIAR+1];
 
-Wektor UkladRownanLiniowych::Oblicz(UkladRownanLiniowych &UklRown){
- Wektor wolne;
- Macierz macierz;
- double tmp[ROZMIAR+1];
-
- wolne = this ->w;
- //cout<<macierz<<wolne;
- //macierz = macierz.zamien_kol_wiersz();
-  tmp[ROZMIAR]=UklRown.M.wyzG();
-  cout<<tmp[ROZMIAR]<<endl;
-  for (int i = 0; i < ROZMIAR; ++i) {
-       macierz = this->M;
-        macierz = macierz.zamien_kol_z_wektorem(i,UklRown.w);
+//  wolne = this ->wektor_wyraz_wolnych;
+//  //cout<<macierz<<wolne;
+//  //macierz = macierz.zamien_kol_wiersz();
+//   tmp[ROZMIAR]=UklRown.macierz.wyzG();
+//   //cout<<tmp[ROZMIAR]<<endl;
+//   for (int i = 0; i < ROZMIAR; ++i) {
+//        macierz = this->macierz;
+//         macierz = macierz.zamien_kol_z_wektorem(i,UklRown.wektor_wyraz_wolnych);
        
-    tmp[i]=macierz.wyzG();
+//     tmp[i]=macierz.wyzG();
 
-    cout<<tmp[i]<<endl;
+//     //cout<<tmp[i]<<endl;
 
     
 
-    wolne[i]=tmp[i]/tmp[ROZMIAR];
-    }
-  return wolne;
-}
+//     wolne[i]=tmp[i]/tmp[ROZMIAR];
+//     }
+//   return wolne;
+// }
 
 
 
 
 
-
-istream& operator >> (istream &Strm, UkladRownanLiniowych &UklRown) {
-    for (int i = 0; i < ROZMIAR; ++i) {
-        for (int j = 0; j <=ROZMIAR; ++j) {
+// template<typename T, int Rozmiar>
+// istream& operator >> (istream &Strm, UkladRownanLiniowych<T ,Rozmiar> &UklRown) {
+//     for (int i = 0; i < ROZMIAR; ++i) {
+//         for (int j = 0; j <=ROZMIAR; ++j) {
             
-            if(j==ROZMIAR)
-            {
-                Strm >> UklRown.w[i];
-            }
-            else
-            Strm >> UklRown.M(i,j);
+//             if(j==ROZMIAR)
+//             {
+//                 Strm >> UklRown.wektor_wyraz_wolnych[i];
+//             }
+//             else
+//             Strm >> UklRown.macierz(i,j);
             
-        }
-    }
-    return Strm;
-}
-
-ostream& operator << (ostream &Strm,  UkladRownanLiniowych &UklRown) {
+//         }
+//     }
+//     return Strm;
+// }
+// template<typename T, int Rozmiar>
+// ostream& operator << (ostream &Strm,  UkladRownanLiniowych<T ,Rozmiar> &UklRown) {
     
-    Strm << endl << endl << "Macierz " << endl;
-    Strm << UklRown.M;
-    Strm << endl << "Wektor wyrazow wolnych " << endl;
-    Strm << UklRown.w <<endl << endl;
+//     Strm <<  "Macierz " << endl;
+//     Strm << UklRown.macierz;
+//     Strm <<  "Wektor wyrazow wolnych " << endl;
+//     Strm << UklRown.wektor_wyraz_wolnych <<endl;
 
-    return Strm;
-}
+//     return Strm;
+// }

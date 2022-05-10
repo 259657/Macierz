@@ -3,6 +3,7 @@
 #include "Wektor.hh"
 #include "Macierz.hh"
 #include "UkladRownanLiniowych.hh"
+#include "LZespolona.hh"
 
 
 
@@ -20,51 +21,58 @@ int main(int argc, char **argv)
 {
 
   
-  UkladRownanLiniowych   UklRown;   // To tylko przykladowe definicje zmiennej
+  UkladRownanLiniowych<double,4>   UklRown;   // To tylko przykladowe definicje zmiennej
 
  
   cout << endl << " Start programu " << endl << endl;
- Wektor v,v2,v3;
-  Macierz m,m1,m2,dod;
-//   double skalar;
-   //cin>> UklRown;
-   //cout<< UklRown;
-   if (argc < 2) {
-    cerr << endl;
-    cerr << " Brak nazwy pliku z zawartoscia testu." << endl;
-    cerr << endl;
-    return 1;
-  }
 
-  ifstream  PlikTestu(argv[1]);
+    if (argc < 2) {
+     cerr << endl;
+     cerr << " Brak nazwy pliku z zawartoscia testu." << endl;
+     cerr << endl;
+     return 1;
+   }
 
-  if (PlikTestu.is_open() == false) { 
-    return 1;
-  }
-  cout << endl;
-  cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
-  cout << endl;
+   ifstream  PlikTestu(argv[1]);
 
-  
+   if (PlikTestu.is_open() == false) { 
+     return 1;
+   }
+   cout << endl;
+   cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
+   cout << endl;
 
+//  int x= 0; 
+// while(x!= 2){
   PlikTestu >> UklRown;
   cout<< UklRown;
 
 
   UklRown.Oblicz(UklRown);
-  Wektor wynik;
-  wynik =UklRown.Oblicz(UklRown);
+  Wektor<double,4>  wynik;
+  wynik = UklRown.Oblicz(UklRown);
   cout<<"Odp :" << wynik << endl;
+  //++x;
+//}
+   PlikTestu.close();
+   
+
+    LZespolona i;
+    cin >> i;
+
+    cout << i ;
+
+    // Wektor<double,ROZMIAR> v;
+    // Wektor<double,ROZMIAR> v2;
+    // Wektor<double,ROZMIAR> v3;
   
-  PlikTestu.close();
-   
 
 
-
-   
-// cout<<"podaj drugi wektor"<<endl;
-//   cin>>v2;
-//   cout<<v2;
+//  cout<<"podaj  wektor"<<endl;
+//    cin >> v2;
+//    cin >> v;
+//    v3 = v - v2;
+//    cout << v3;
 //   v3 = v+v2;
 //   cout<<v3;
 //   skalar= v3*v2 ;

@@ -4,31 +4,27 @@
 #include "rozmiar.h"
 #include <iostream>
 
-
+using namespace std;
 /*
  *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
  *  i jakie ma glowne cechy.
  */
-class Wektor {
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
-   */
-  
-  double rozmiar[ROZMIAR];
-
+template<typename T, int Rozmiar>
+class Wektor { 
+   T rozmiar[Rozmiar];
   public:
   /*
    *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
    */    
 
-Wektor operator+(Wektor v);
-Wektor operator-(Wektor v);
-Wektor operator*(double liczba);
-double operator*(Wektor v);
-Wektor operator&(Wektor v);// mnozenie wektorowe
-//Wektor operator/(double liczba);
-const double &operator[](int i)const{return rozmiar[i];}
-double &operator[](int i){return rozmiar[i];}
+Wektor<T ,Rozmiar> operator+(Wektor<T ,Rozmiar> &v);
+Wektor<T ,Rozmiar> operator-(Wektor<T ,Rozmiar> v);
+Wektor<T ,Rozmiar> operator*(T liczba);
+T operator*(Wektor<T ,Rozmiar> v);
+
+
+const T &operator[](int i)const{return rozmiar[i];}
+T &operator[](int i){return rozmiar[i];}
 
 
 };
@@ -41,15 +37,74 @@ double &operator[](int i){return rozmiar[i];}
  * znalezc w pliku:
  *    ~bk/edu/kpo/zalecenia.txt 
  */
-std::istream& operator >> (std::istream &Strm, Wektor &Wek);
+template<typename T, int Rozmiar>
+std::istream& operator >> (std::istream &Strm, Wektor<T ,Rozmiar> &Wek){
+    for (int i = 0; i < Rozmiar; ++i)
+    {
+        Strm >> Wek[i];
+    }
+    cout << endl;
+    return Strm;
+}
 
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::ostream& operator << (std::ostream &Strm,  Wektor &Wek);
+
+template<typename T, int Rozmiar>
+std::ostream& operator << (std::ostream &Strm,  Wektor<T ,Rozmiar> &Wek){
+Strm << "[";
+for (int i = 0; i < Rozmiar; ++i)
+    {
+        Strm <<" "<<Wek[i]<<" "; 
+    }
+    cout << "]"<< endl;
+
+
+    return Strm;
+}
+
+
+template<typename T, int Rozmiar>
+Wektor<T ,Rozmiar> Wektor<T, Rozmiar>::operator+(Wektor<T ,Rozmiar> &v) {
+    Wektor<T, Rozmiar>  wynik;
+
+    for (int i = 0; i < Rozmiar; ++i) {
+        wynik.rozmiar[i] = this->rozmiar[i] + v.rozmiar[i];
+    }
+
+    return wynik;
+}
+
+template<typename T, int Rozmiar>
+Wektor<T ,Rozmiar> Wektor<T ,Rozmiar>::operator-(Wektor<T ,Rozmiar>  v){
+    Wektor<T , Rozmiar >  wynik;
+    for (int i = 0; i < Rozmiar; ++i) {
+        wynik.rozmiar[i] = this->rozmiar[i] - v.rozmiar[i];
+    }
+
+    return wynik;
+}
+
+template<typename T, int Rozmiar>
+T Wektor<T ,Rozmiar>::operator*(Wektor<T ,Rozmiar> v){
+T wynik = 0;
+    for(int i = 0; i < Rozmiar ; ++i){
+        wynik += this->rozmiar[i]  * v.rozmiar[i];
+
+
+    }
+    return wynik;
+}
+
+template<typename T, int Rozmiar>
+Wektor<T ,Rozmiar> Wektor<T ,Rozmiar>::operator*(T liczba){
+ Wektor<T ,Rozmiar>  wynik;
+    for(int i = 0; i < Rozmiar ; ++i){
+        wynik.rozmiar[i] = this-> rozmiar[i] * liczba;
+    }
+    return wynik;
+}
+
+
+
+
 
 #endif

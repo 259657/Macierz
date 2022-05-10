@@ -6,11 +6,11 @@ CXXFLAGS= -c -g -Iinc -Wall -pedantic
 __start__: uklad
 	./uklad uklad.txt
 
-uklad: obj/main.o obj/UkladRownanLiniowych.o obj/Macierz.o obj/Wektor.o
+uklad: obj/main.o obj/UkladRownanLiniowych.o obj/Macierz.o obj/Wektor.o obj/LZespolona.o
 	g++ -Wall -pedantic -o uklad obj/main.o obj/Wektor.o\
-                                   obj/Macierz.o obj/UkladRownanLiniowych.o
+                                   obj/Macierz.o obj/UkladRownanLiniowych.o obj/LZespolona.o
 
-obj/main.o: src/main.cpp inc/UkladRownanLiniowych.hh inc/Macierz.hh inc/Wektor.hh\
+obj/main.o: src/main.cpp inc/UkladRownanLiniowych.hh inc/Macierz.hh inc/Wektor.hh inc/LZespolona.hh \
         inc/rozmiar.h
 	g++ ${CXXFLAGS} -o obj/main.o src/main.cpp
 
@@ -22,6 +22,9 @@ obj/Macierz.o: src/Macierz.cpp inc/Macierz.hh
 
 obj/Wektor.o: src/Wektor.cpp inc/Wektor.hh inc/rozmiar.h
 	g++ ${CXXFLAGS} -o obj/Wektor.o src/Wektor.cpp
+
+obj/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh 
+	g++ ${CXXFLAGS} -o obj/LZespolona.o src/LZespolona.cpp
 
 clean:
 	rm -f obj/*.o uklad
